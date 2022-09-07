@@ -13,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
   ],
   exports: [
     ModalComponent
-  ]
+  ],
+
 })
 export class SharedModule { }
