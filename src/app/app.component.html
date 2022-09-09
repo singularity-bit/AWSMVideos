@@ -247,7 +247,7 @@
       </a>
     </div>
 
- <app-auth-modal></app-auth-modal>
+ <app-auth-modal *ngIf="!(auth.isAuthDelay$ | async)"></app-auth-modal>
 
   </section>
   
