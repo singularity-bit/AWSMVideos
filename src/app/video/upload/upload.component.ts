@@ -101,7 +101,7 @@ export class UploadComponent implements OnDestroy {
         const clipDocRef = await this.clipsService.createClip(clip)
 
         this.alertOptions({
-          inSubmission: true,
+          inSubmission: false,
           showAlert: true,
           alertMsg: 'Your video was successfully uploaded',
           alertColor: 'green'
