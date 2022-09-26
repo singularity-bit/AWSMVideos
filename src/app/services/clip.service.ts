@@ -10,6 +10,9 @@ import { BehaviorSubject, combineLatest, of } from 'rxjs';
 })
 export class ClipService {
   public clipsCollection: AngularFirestoreCollection<IClip>
+  pageClips: IClip[] = []
+  pendingRequest = false
+  noMoreClips = false
 
   constructor(
     private db: AngularFirestore,
@@ -58,5 +61,35 @@ export class ClipService {
     await clipRef.delete()
     await screenShotRef.delete()
     await this.clipsCollection.doc(data.docID).delete()
+  }
+
+  async getClips() {
+    if (this.pendingRequest) {
+      return
+    }
+    this.pendingRequest = true
+    let query = this.clipsCollection.ref.orderBy('timestamp', 'desc').limit(6)
+
+    const { length } = this.pageClips
+    if (length) {
+      const lastDocID = this.pageClips[length - 1].docID
+      const lastDoc = await this.clipsCollection.doc(lastDocID).get().toPromise()
+
+      query = query.startAfter(lastDoc)
+    }
+
+    const snapshot = await query.get()
+
+    if (snapshot.docs.length < 6) {
+      this.noMoreClips = true
+    }
+
+    snapshot.forEach(doc => {
+      this.pageClips.push({
+        docID: doc.id,
+        ...doc.data()
+      })
+    })
+    this.pendingRequest = false
   }
 }
