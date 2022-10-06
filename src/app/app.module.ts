@@ -16,6 +16,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ClipsListComponent } from './clips-list/clips-list.component';
 import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
+import { LanguageSwitcherComponent } from './nav/language-switcher/language-switcher.component';
+import { TranslationsService } from './services/translations.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
     ClipComponent,
     NotFoundComponent,
     ClipsListComponent,
-    FbTimestampsPipe
+    FbTimestampsPipe,
+    LanguageSwitcherComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,6 @@ import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
     AppRoutingModule,
     AngularFireStorageModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

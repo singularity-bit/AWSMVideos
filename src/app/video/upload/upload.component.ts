@@ -10,6 +10,7 @@ import { ClipService } from 'src/app/services/clip.service';
 import { Router } from '@angular/router';
 import { FfmpegService } from 'src/app/services/ffmpeg.service';
 import { combineLatest, forkJoin } from 'rxjs';
+import { TranslationsService } from 'src/app/services/translations.service';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -22,7 +23,8 @@ export class UploadComponent implements OnDestroy {
     private auth: AngularFireAuth,
     private clipsService: ClipService,
     private router: Router,
-    public ffmpegService: FfmpegService
+    public ffmpegService: FfmpegService,
+    public translations: TranslationsService
   ) {
     auth.user.subscribe(user => this.user = user)
     this.ffmpegService.init()
@@ -42,7 +44,7 @@ export class UploadComponent implements OnDestroy {
 
   inSubmission = false
   showAlert = false
-  alertMsg = 'Please wait your video is being uploaded'
+  alertMsg = this.translations.getTranslation('video_is_uploading')?.translation
   alertColor = 'blue'
 
 
@@ -86,7 +88,7 @@ export class UploadComponent implements OnDestroy {
     this.alertOptions({
       inSubmission: true,
       showAlert: true,
-      alertMsg: 'Please wait your video is being uploaded',
+      alertMsg: this.translations.getTranslation('video_is_uploading')?.translation || '',
       alertColor: 'blue'
     })
     this.showPercentage = true
@@ -138,7 +140,7 @@ export class UploadComponent implements OnDestroy {
         this.alertOptions({
           inSubmission: false,
           showAlert: true,
-          alertMsg: 'Your video was successfully uploaded',
+          alertMsg: this.translations.getTranslation('video_uploaded')?.translation || '',
           alertColor: 'green'
         })
         this.showPercentage = false

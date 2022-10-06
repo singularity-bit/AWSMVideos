@@ -7,6 +7,9 @@
       "projectType": "application",
       "schematics": {},
       "root": "",
+      "i18n": {
+        "sourceLocale":"en-US"
+      },
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {

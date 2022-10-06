@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import videojs from 'video.js';
 import IClip from '../models/clip.model';
 import { DatePipe } from '@angular/common';
+import { TranslationsService } from '../services/translations.service';
 
 @Component({
   selector: 'app-clip',
@@ -18,7 +19,8 @@ export class ClipComponent implements OnInit {
   clip?: IClip
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public translations: TranslationsService
   ) {
   }
 

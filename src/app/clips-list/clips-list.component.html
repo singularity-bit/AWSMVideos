@@ -37,4 +37,4 @@
   </a>
 </div>
 <button *ngIf="!clipService.noMoreClips" class="disabled:opacity-50 hover:bg-indigo-500 disabled:bg-indigo-400 bg-transparent font-semibold  py-3 px-4  my-5 transition hover:text-white 
-hover:bg-indigo-400 " [disabled]="clipService.pendingRequest" (click)="loadMore($event)">Load more...</button>
+hover:bg-indigo-400 " [disabled]="clipService.pendingRequest" (click)="loadMore($event)">{{translations.getTranslation('btn_load_more')?.translation}}</button>
