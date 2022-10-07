@@ -9,18 +9,19 @@ import { TranslationsService } from 'src/app/services/translations.service';
 })
 export class LanguageSwitcherComponent implements OnInit {
   openLanguageSelector = false
-
+  lang
   constructor(
     private translations: TranslationsService
   ) {
+    this.lang = localStorage.getItem('lang') || 'en'
   }
 
   ngOnInit(): void {
-    this.translations.initTranslations('EN')
   }
 
   changeLocale($event: Event) {
     $event.preventDefault()
-    this.translations.initTranslations(($event.target as HTMLSelectElement).value)
+    localStorage.setItem('lang', ($event.target as HTMLSelectElement).value)
+    window.location.reload()
   }
 }

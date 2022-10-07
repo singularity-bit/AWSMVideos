@@ -12,7 +12,7 @@
             <a 
             class="px-2" href="#" 
             (click)="openModal($event)" 
-            >{{translations.getTranslation('nav_login')?.translation}}</a>
+            >{{'nav_login'|translate}}</a>
           </li>
           <ng-template #authLinks>
             <li>
@@ -22,7 +22,7 @@
               routerLink="/manage" 
               [routerLinkActiveOptions]="{exact:true}"
               [queryParams]="{sort:'recent'}"
-              >{{translations.getTranslation('manage')?.translation}}</a>
+              >{{'manage'|translate}}</a>
             </li>
             <li>
               <a 
@@ -30,13 +30,13 @@
               [routerLinkActiveOptions]="{exact:true}" 
               routerLinkActive="text-indigo-400" 
               routerLink="/upload" 
-              >{{translations.getTranslation('upload')?.translation}}</a>
+              >{{'upload'|translate}}</a>
             </li>
             <li>
               <a class="px-2" 
               href="#" 
               (click)="auth.logout($event)"
-              >{{translations.getTranslation('logout')?.translation}}</a>
+              >{{'logout'|translate}}</a>
             </li>
           </ng-template>
          
@@ -46,7 +46,7 @@
             routerLink="/about" 
             routerLinkActive="text-indigo-400" 
             [routerLinkActiveOptions]="{exact:true}"
-            >{{translations.getTranslation('about')?.translation}}</a>
+            >{{'about'|translate}}</a>
           </li>
         </ul>
 

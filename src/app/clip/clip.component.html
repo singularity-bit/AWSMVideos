@@ -4,7 +4,7 @@
       <!-- Title and Uploader -->
       <h1 class="font-bold mb-2 text-3xl">{{clip?.title}}</h1>
       <div class="text-gray-400 mb-6">
-        {{translations.getTranslation('uploaded_by',clip?.displayName)?.translation}}
+        {{'uploaded_by'|translate:param}}
         <span>{{clip?.timestamp | fbTimestamps}}</span>
       </div>
 
@@ -23,7 +23,7 @@
 
   <!-- More Clips -->
   <div class="container mx-auto my-8">
-    <h2 class="mt-6 text-2xl">{{translations.getTranslation('more_clips')?.translation}}</h2>
+    <h2 class="mt-6 text-2xl">{{'more_clips'|translate}}</h2>
 
     <app-clips-list></app-clips-list>
   </div>

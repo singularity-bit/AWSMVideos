@@ -4,6 +4,7 @@ import videojs from 'video.js';
 import IClip from '../models/clip.model';
 import { DatePipe } from '@angular/common';
 import { TranslationsService } from '../services/translations.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-clip',
@@ -18,9 +19,10 @@ export class ClipComponent implements OnInit {
   player?: videojs.Player
   clip?: IClip
 
+  param = { displayName: 'username' }
+
   constructor(
     private route: ActivatedRoute,
-    public translations: TranslationsService
   ) {
   }
 
@@ -29,6 +31,7 @@ export class ClipComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.clip = data.clip as IClip
+      this.param = { displayName: (data.clip as IClip).displayName }
       this.player?.src({
         src: this.clip.url,
         type: 'video/mp4'

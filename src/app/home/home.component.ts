@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslationsService } from '../services/translations.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,6 @@ import { TranslationsService } from '../services/translations.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    public translations: TranslationsService
   ) { }
 
   ngOnInit(): void {

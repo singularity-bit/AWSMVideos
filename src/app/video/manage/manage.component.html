@@ -1,14 +1,14 @@
  <!-- Top Bar -->
  <section class="container mx-auto my-8 bg-secondary p-6">
     <div class="rounded relative flex justify-between">
-      <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl">{{translations.getTranslation('btn_upload_video')?.translation}}</a>
+      <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl">{{'btn_upload_video'|translate}}</a>
       
       <!-- Sort Videos -->
       <select 
         (change)="sort($event)"
         class="text-black px-8 text-xl outline-none appearance-none">
-        <option value="recent" [selected]="videoOrder==='recent'">{{translations.getTranslation('option_recent')?.translation}}</option>
-        <option value="oldest" [selected]="videoOrder==='oldest'">{{translations.getTranslation('option_oldest')?.translation}}</option>
+        <option value="recent" [selected]="videoOrder==='recent'">{{'option_recent'|translate}}</option>
+        <option value="oldest" [selected]="videoOrder==='oldest'">{{'option_oldest'|translate}}</option>
       </select>
     </div>
   </section>

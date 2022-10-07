@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../services/auth.service';
 import { ModalService } from '../services/modal.service';
-import { TranslationsService } from '../services/translations.service';
-import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -14,14 +13,10 @@ export class NavComponent implements OnInit {
   constructor(
     public modal: ModalService,
     public auth: AuthService,
-    public translations: TranslationsService,
   ) {
-
-
   }
 
   ngOnInit() {
-
   }
 
 

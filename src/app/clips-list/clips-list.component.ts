@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ClipService } from '../services/clip.service';
 import { DatePipe } from '@angular/common';
-import { TranslationsService } from '../services/translations.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-clips-list',
@@ -13,7 +13,8 @@ export class ClipsListComponent implements OnInit {
 
   constructor(
     public clipService: ClipService,
-    public translations: TranslationsService
+    public translate: TranslateService,
+
   ) {
     this.clipService.getClips()
   }

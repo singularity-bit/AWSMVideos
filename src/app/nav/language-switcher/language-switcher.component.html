@@ -1,5 +1,5 @@
 
 <select class="text-white bg-transparent px-8 outline-none " (change)="changeLocale($event)">
-    <option value="EN">English</option>
-    <option value="RO">Romana</option>
+    <option value="en" [selected]="lang==='en'">English</option>
+    <option value="ro" [selected]="lang==='ro'">Romana</option>
   </select>

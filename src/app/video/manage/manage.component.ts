@@ -4,7 +4,6 @@ import IClip from 'src/app/models/clip.model';
 import { ClipService } from 'src/app/services/clip.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { BehaviorSubject } from 'rxjs';
-import { TranslationsService } from 'src/app/services/translations.service';
 @Component({
   selector: 'app-manage',
   templateUrl: './manage.component.html',
@@ -22,7 +21,6 @@ export class ManageComponent implements OnInit {
     private route: ActivatedRoute,
     private clipService: ClipService,
     private modal: ModalService,
-    public translations: TranslationsService
   ) {
     this.sort$ = new BehaviorSubject(this.videoOrder)
   }

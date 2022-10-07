@@ -5,6 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslationsService } from '../services/translations.service';
 
 
 @NgModule({
@@ -17,7 +19,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forChild({
+      loader: { provide: TranslateLoader, useClass: TranslationsService },
+      isolate: true
+    })
   ],
   exports: [
     AuthModalComponent

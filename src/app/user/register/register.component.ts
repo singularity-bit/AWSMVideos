@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import IAlert from 'src/app/models/alert.model';
 import IUser from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,9 +15,17 @@ import { RegisterValidators } from '../validators/register-validators';
 
 
 export class RegisterComponent {
+  alert_creating_account: any;
+  login_successfull: any;
 
   constructor(private auth: AuthService,
-    private emailTaken: EmailTaken) { }
+    private translate: TranslateService,
+
+    private emailTaken: EmailTaken) {
+
+    this.translate.get('alert_creating_account').subscribe(value => this.alert_creating_account = value)
+    this.translate.get('login_successfull').subscribe(value => this.login_successfull = value)
+  }
 
 
   name = new FormControl('', [
@@ -71,7 +80,7 @@ export class RegisterComponent {
     this.alertOptions({
       inSubmission: true,
       showAlert: true,
-      alertMsg: 'Please wait your accound is being created',
+      alertMsg: this.alert_creating_account,
       alertColor: 'green'
     })
 
@@ -80,7 +89,7 @@ export class RegisterComponent {
       this.alertOptions({
         inSubmission: false,
         showAlert: true,
-        alertMsg: 'Your account was successfully created',
+        alertMsg: this.login_successfull,
         alertColor: 'green'
       })
 

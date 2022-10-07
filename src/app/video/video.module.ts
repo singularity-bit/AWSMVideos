@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { SafeURLPipe } from './pipes/safe-url.pipe';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslationsService } from '../services/translations.service';
 
 
 @NgModule({
@@ -21,7 +23,11 @@ import { SafeURLPipe } from './pipes/safe-url.pipe';
     CommonModule,
     VideoRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forChild({
+      loader: { provide: TranslateLoader, useClass: TranslationsService },
+      isolate: true
+    })
   ]
 })
 export class VideoModule { }

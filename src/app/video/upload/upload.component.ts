@@ -44,7 +44,7 @@ export class UploadComponent implements OnDestroy {
 
   inSubmission = false
   showAlert = false
-  alertMsg = this.translations.getTranslation('video_is_uploading')?.translation
+  alertMsg = "this.translations.getTranslation('video_is_uploading')"
   alertColor = 'blue'
 
 
@@ -88,7 +88,7 @@ export class UploadComponent implements OnDestroy {
     this.alertOptions({
       inSubmission: true,
       showAlert: true,
-      alertMsg: this.translations.getTranslation('video_is_uploading')?.translation || '',
+      alertMsg: "this.translations.getTranslation('video_is_uploading')" || '',
       alertColor: 'blue'
     })
     this.showPercentage = true
@@ -140,7 +140,7 @@ export class UploadComponent implements OnDestroy {
         this.alertOptions({
           inSubmission: false,
           showAlert: true,
-          alertMsg: this.translations.getTranslation('video_uploaded')?.translation || '',
+          alertMsg: "this.translations.getTranslation('video_uploaded')" || '',
           alertColor: 'green'
         })
         this.showPercentage = false

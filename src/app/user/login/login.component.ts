@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import IAlert from 'src/app/models/alert.model';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +18,9 @@ export class LoginComponent implements OnInit {
   showAlert = false
   alertMsg = 'Please wait your accound is being created'
   alertColor = 'blue'
+
+  alert_creating_account = ''
+  login_successfull = ''
   alertOptions({ alertColor, alertMsg, inSubmission, showAlert }: IAlert) {
     this.inSubmission = inSubmission
     this.showAlert = showAlert
@@ -24,16 +28,20 @@ export class LoginComponent implements OnInit {
     this.alertColor = alertColor
   }
   constructor(
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private translate: TranslateService,
+
   ) { }
 
   ngOnInit(): void {
+    this.translate.get('alert_creating_account').subscribe(value => this.alert_creating_account = value)
+    this.translate.get('login_successfull').subscribe(value => this.login_successfull = value)
   }
   async login() {
     this.alertOptions({
       inSubmission: true,
       showAlert: true,
-      alertMsg: 'Please wait we are logging you in',
+      alertMsg: this.alert_creating_account,
       alertColor: 'green'
     })
     try {
@@ -43,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.alertOptions({
         inSubmission: false,
         showAlert: true,
-        alertMsg: 'login successfull',
+        alertMsg: this.login_successfull,
         alertColor: 'green'
       })
 
